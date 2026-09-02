@@ -1,0 +1,2 @@
+# Optional video and frame pipeline support.
+opencv-python>=4.10

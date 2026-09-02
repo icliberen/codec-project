@@ -1,0 +1,44 @@
+Smart Codec - third-party notices
+Copyright (c) 2026 icliberen (Smart Codec project code).
+
+Smart Codec is distributed under GNU AGPL-3.0-only. This does not replace
+the licenses, notices, or copyrights of its third-party dependencies.
+
+Primary components and upstream projects:
+  Python:       https://www.python.org/             PSF license
+  NumPy:        https://numpy.org/                  BSD-3-Clause
+  Pillow:       https://python-pillow.github.io/    MIT-CMU / HPND
+  PyWavelets:   https://pywavelets.readthedocs.io/   MIT
+  Matplotlib:   https://matplotlib.org/             Matplotlib license
+  PySide6/Qt:   https://www.qt.io/qt-for-python      LGPL/GPL/commercial options
+  PyTorch:      https://pytorch.org/                BSD-style; bundled notices
+  torchvision: https://github.com/pytorch/vision   BSD-3-Clause
+  OpenCV:       https://opencv.org/                 Apache-2.0; bundled notices
+  Ultralytics: https://www.ultralytics.com/license  AGPL-3.0 or commercial
+  tkinterdnd2: https://github.com/pmgagne/tkinterdnd2 MIT; Tk/TkDND notices
+  PyInstaller: https://pyinstaller.org/             GPL with bootloader exception
+
+The Windows release contains third_party_licenses with license/notice files
+collected from the build environment and a component/version manifest.
+Those full texts take precedence over this short inventory. Binary wheels
+may contain additional libraries (OpenJPEG, libjpeg, numerical libraries,
+Qt components); their bundled notices are retained. Python's license is
+included separately when available from the build interpreter.
+
+Optional Ultralytics YOLO11 weights come from:
+  https://github.com/ultralytics/assets/releases/tag/v8.3.0
+  yolo11m-seg.pt (segmentation), yolo11n.pt (detection)
+They remain subject to Ultralytics' license terms. No third-party test
+photos or trained restoration weights are distributed in this repository.
+
+Qt shared libraries are bundled dynamically. This project imposes no
+additional restriction on replacement of LGPL components or reverse
+engineering for debugging modifications to those components. Upstream
+source is available from https://code.qt.io/ and
+https://download.qt.io/official_releases/QtForPython/ .
+
+Windows fonts such as Segoe UI are used from the user's operating system.
+No Windows font files are redistributed with this project.
+
+Corresponding Smart Codec source is the commit identified by a release tag:
+  https://github.com/icliberen/codec-project

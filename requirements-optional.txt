@@ -1,0 +1,6 @@
+# Optional semantic ROI detection. The core codec does not require it.
+ultralytics>=8.3
+# Install a matching CPU/CUDA build only when using TorchRestorationAdapter.
+torch>=2.0
+# Optional native file drag-and-drop support for the Tkinter GUI.
+tkinterdnd2>=0.4.2
