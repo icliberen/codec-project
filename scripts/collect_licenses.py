@@ -15,6 +15,12 @@ ROOT = Path(__file__).resolve().parents[1]
 def main() -> None:
     destination = ROOT / "third_party_licenses"
     destination.mkdir(exist_ok=True)
+    # PySide6 6.8.3 wheels list the LGPL/GPL alternatives in METADATA but
+    # include only a commercial-license notice; ship the open-source texts too.
+    qt_notices = destination / "Qt-license-texts"
+    qt_notices.mkdir(exist_ok=True)
+    for license_file in (ROOT / "licenses").glob("*.txt"):
+        shutil.copy2(license_file, qt_notices / license_file.name)
     manifest = []
     for distribution in sorted(importlib.metadata.distributions(), key=lambda d: d.metadata.get("Name", "").lower()):
         name = distribution.metadata.get("Name", "unknown")
