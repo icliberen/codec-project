@@ -1,6 +1,7 @@
 """Collect installed component versions and verbatim license/notice files."""
 from __future__ import annotations
 
+import hashlib
 import importlib.metadata
 import json
 from pathlib import Path
@@ -29,10 +30,14 @@ def main() -> None:
             relative = Path(*[part for part in Path(file).parts if part not in {"..", "."}])
             if relative.is_absolute():
                 continue
-            target = component / relative
+            # Wheel notice directories can exceed Windows' path-length limit.
+            # Keep a stable short filename and preserve the original in the manifest.
+            key = hashlib.sha256(str(file).encode("utf-8")).hexdigest()[:16]
+            safe_file = re.sub(r"[^A-Za-z0-9_.-]", "_", relative.name)[:80]
+            target = component / f"{key}-{safe_file}"
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(source, target)
-            copied.append(target.relative_to(destination).as_posix())
+            copied.append({"file": target.relative_to(destination).as_posix(), "original": str(file)})
         manifest.append({"name": name, "version": distribution.version,
                          "license": distribution.metadata.get("License-Expression") or distribution.metadata.get("License"),
                          "project_urls": distribution.metadata.get_all("Project-URL") or [],

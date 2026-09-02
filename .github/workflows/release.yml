@@ -3,7 +3,7 @@ name: Build and publish Windows release
 on:
   push:
     branches: [main]
-    paths: ['.github/workflows/release.yml']
+    paths: ['.github/workflows/release.yml', 'scripts/collect_licenses.py', 'build_windows.ps1', 'requirements-build.txt']
   workflow_dispatch:
 
 permissions:
@@ -11,7 +11,7 @@ permissions:
 
 concurrency:
   group: windows-release
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   windows:
